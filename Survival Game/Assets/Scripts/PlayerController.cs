@@ -36,10 +36,11 @@ public class PlayerController : MonoBehaviour
     private float cameraRotationLimit; //고개를들때각도제한
     private float currentCameraRotationX=0f;//정면을바라보고있게
 
+    //필요한컴포넌트
     [SerializeField]
     private Camera theCamera;
-
     private Rigidbody myRigid; //플레이어의몸체
+    private GunController theGunController;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,9 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
         applySpeed = walkSpeed;
+        theGunController = FindObjectOfType<GunController>();
+
+        //초기화
         originPosY = theCamera.transform.localPosition.y;
         applyCouchPosY = originPosY;//기본서있는상태
     }
@@ -134,6 +138,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouch)//앉아있을때달리기시도
             Crouch();
+
+        theGunController.CancleFineSight();
+
         isRun = true;
         applySpeed = runSpeed;
     }
