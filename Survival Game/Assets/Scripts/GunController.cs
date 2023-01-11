@@ -7,18 +7,28 @@ public class GunController : MonoBehaviour
     [SerializeField]
     private Gun currentGun;
 
-    private float currentFireRate; //총의FireRate값을가져와서1초에1씩깎음>0이되면발사가능
+    private float currentFireRate; //총의FireRate값을가져와서1초에1씩깎음,0이되면발사가능,연사속도계산
 
     private bool isReload = false; //false일때만발사가되도록
+    [HideInInspector]
     private bool isFineSightMode = false; //정조준상태여부
 
-    [SerializeField]
     private Vector3 originPos; //정조준하고나서 돌아올 원래 벡터값
 
     private AudioSource audioSource; //선언만.껍데기만만든것
 
+    //레이저 충돌 정보 받아옴
+    private RaycastHit hitInfo;
+
+    [SerializeField]
+    private Camera theCam; //게임화면이카메라시점이라
+
+    [SerializeField]
+    private GameObject hit_effect_prefab; //피격effect
+
     private void Start()
     {
+        originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>(); //넣어줘야함
 
     }
@@ -63,13 +73,21 @@ public class GunController : MonoBehaviour
         currentFireRate = currentGun.fireRate; //발사가이뤄진뒤에 연사속도재계산
         PlaySE(currentGun.fire_Sound);
         currentGun.muzzleFlash.Play();
+        Hit(); //발사하는족족맞는걸로
 
         StopAllCoroutines();
         StartCoroutine(RetroActionCoroutine());//총기반동코루틴실행
-
-        Debug.Log("총알 발사함");
     }
 
+    private void Hit()
+    {
+        //충돌한게있어서반환값이있으면t
+        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        {
+           var clone= Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Destroy(clone, 2f);
+        }
+    }
     private void TryReload() //수동재장전구현
     {
         if(Input.GetKeyDown(KeyCode.R)&& !isReload && currentGun.currentBulletCount < currentGun.reloadBulletCount)
