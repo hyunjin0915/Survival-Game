@@ -11,7 +11,8 @@ public class Crosshair : MonoBehaviour
 
     [SerializeField]
     private GameObject go_CrosshairHUD; //크로스헤어비활성화를위한부모객체
-
+    [SerializeField]
+    private GunController theGunController;
 
     public void WalkingAnimation(bool _flag)
     {
@@ -25,5 +26,32 @@ public class Crosshair : MonoBehaviour
     {
         animator.SetBool("Crouching", _flag);
     }
- 
+    public void FineSightAnimation(bool _flag)
+    {
+        animator.SetBool("FineSight", _flag);
+    }
+
+    public void FireAnimation()
+    {
+        if (animator.GetBool("Walking"))
+            animator.SetTrigger("Walk_Fire");
+        else if (animator.GetBool("Crouching"))
+            animator.SetTrigger("Crouch_Fire");
+        else
+            animator.SetTrigger("Idle_Fire");
+    }
+
+    public float GetAccuracy()
+    {
+        if (animator.GetBool("Walking"))
+            gunAccuracy = 0.06f;
+        else if (animator.GetBool("Crouching"))
+            gunAccuracy = 0.015f;
+        else if (theGunController.GetFineSightMode())
+            gunAccuracy = 0.001f;
+        else
+            gunAccuracy = 0.035f;
+
+        return gunAccuracy;
+    }
 }

@@ -20,8 +20,10 @@ public class GunController : MonoBehaviour
     //레이저 충돌 정보 받아옴
     private RaycastHit hitInfo;
 
+    //필요한컴포넌트
     [SerializeField]
     private Camera theCam; //게임화면이카메라시점이라
+    private Crosshair theCrosshair;
 
     [SerializeField]
     private GameObject hit_effect_prefab; //피격effect
@@ -30,6 +32,7 @@ public class GunController : MonoBehaviour
     {
         originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>(); //넣어줘야함
+        theCrosshair = FindObjectOfType<Crosshair>();
 
     }
     // Update is called once per frame
@@ -69,6 +72,7 @@ public class GunController : MonoBehaviour
     }
     private void Shoot()
     {
+        theCrosshair.FireAnimation();
         currentGun.currentBulletCount--; //발사뒤에총알개수줄이기
         currentFireRate = currentGun.fireRate; //발사가이뤄진뒤에 연사속도재계산
         PlaySE(currentGun.fire_Sound);
@@ -82,7 +86,11 @@ public class GunController : MonoBehaviour
     private void Hit()
     {
         //충돌한게있어서반환값이있으면t
-        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        if (Physics.Raycast(theCam.transform.position, theCam.transform.forward + 
+            new Vector3(Random.Range(-theCrosshair.GetAccuracy()-currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
+                        Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
+                        0), 
+                out hitInfo, currentGun.range))
         {
            var clone= Instantiate(hit_effect_prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(clone, 2f);
@@ -141,6 +149,7 @@ public class GunController : MonoBehaviour
     {
         isFineSightMode = !isFineSightMode;
         currentGun.anim.SetBool("FineSightMode", isFineSightMode);
+        theCrosshair.FineSightAnimation(isFineSightMode);
 
         if(isFineSightMode)
         {
@@ -221,5 +230,9 @@ public class GunController : MonoBehaviour
     public Gun GetGun()
     {
         return currentGun;
+    }
+    public bool GetFineSightMode()
+    {
+        return isFineSightMode;
     }
 }
