@@ -14,7 +14,7 @@ public class GunController : MonoBehaviour
 
     private bool isReload = false; //false일때만발사가되도록
     [HideInInspector]
-    private bool isFineSightMode = false; //정조준상태여부
+    public bool isFineSightMode = false; //정조준상태여부
 
     private Vector3 originPos; //정조준하고나서 돌아올 원래 벡터값
 
