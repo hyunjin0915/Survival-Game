@@ -21,17 +21,22 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private Gun[] guns; 
     [SerializeField]
-    private Hand[] hands;
+    private CloseWeapon[] hands;
+    [SerializeField]
+    private CloseWeapon[] axes;
 
     //관리차원에서쉽게무기접근이가능하도록만듦
     private Dictionary<string, Gun> gunDictionary = new Dictionary<string, Gun>();
-    private Dictionary<string, Hand> handDictionary = new Dictionary<string, Hand>();
+    private Dictionary<string, CloseWeapon> handDictionary = new Dictionary<string, CloseWeapon>();
+    private Dictionary<string, CloseWeapon> axeDictionary = new Dictionary<string, CloseWeapon>();
 
     //필요한컴포넌트
     [SerializeField]
     private GunController theGunController;
     [SerializeField]
     private HandController theHandController;
+    [SerializeField]
+    private AxeController theAxeController;
 
     //현재무기의타입. 총/도끼...
     [SerializeField]
@@ -46,9 +51,15 @@ public class WeaponManager : MonoBehaviour
         }
         for (int i = 0; i < hands.Length; i++)
         {
-            handDictionary.Add(hands[i].handName, hands[i]);
+            handDictionary.Add(hands[i].closeWeaponName, hands[i]);
 
         }
+        for (int i = 0; i < axes.Length; i++)
+        {
+            axeDictionary.Add(axes[i].closeWeaponName, axes[i]);
+
+        }
+
     }
 
     // Update is called once per frame
@@ -67,6 +78,13 @@ public class WeaponManager : MonoBehaviour
                 StartCoroutine(ChangeWeaponCoroutine("GUN", "SubMachineGun1"));
 
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                //무기교체
+                StartCoroutine(ChangeWeaponCoroutine("AXE", "Axe"));
+
+            }
+
         }
     }
 
@@ -98,6 +116,10 @@ public class WeaponManager : MonoBehaviour
             case "HAND":
                 HandController.isActivate = false;
                 break;
+            case "AXE":
+                AxeController.isActivate = false;
+                break;
+
         }
     }
     private void WeaponChange(string _type, string _name)
@@ -106,6 +128,8 @@ public class WeaponManager : MonoBehaviour
             theGunController.GunChange(gunDictionary[_name]);
        
         else if(_type=="HAND")
-            theHandController.HandChange(handDictionary[_name]);
+            theHandController.CloseWeaponChange(handDictionary[_name]);
+        else if(_type=="AXE")
+            theAxeController.CloseWeaponChange(axeDictionary[_name]);
     }
 }
