@@ -5495,9 +5495,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370648790}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -5594,7 +5594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370648790}
   m_LocalRotation: {x: -0, y: 0.6094263, z: -0, w: 0.79284275}
-  m_LocalPosition: {x: 12.39, y: 1, z: 7.63}
+  m_LocalPosition: {x: 11.59, y: 1, z: 7.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -6673,7 +6673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -527.5, y: -227.6}
+  m_AnchoredPosition: {x: -467, y: -241}
   m_SizeDelta: {x: 182, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756016672
@@ -12276,7 +12276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367620710692918031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12545,7 +12545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510024772015034710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12893,13 +12893,70 @@ GameObject:
   m_Component:
   - component: {fileID: 6029625133837705525}
   - component: {fileID: 3728554585344851499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &5508265679242673643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831804, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508265681177831806, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
+      propertyPath: m_Name
+      value: Rock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c95535afcd0b4945932d01aba0bf22e, type: 3}
 --- !u!1 &5674029615881852384
 GameObject:
   m_ObjectHideFlags: 0
@@ -13012,7 +13069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1845574371381951229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13059,7 +13116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9022334247176217870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DownArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13279,7 +13336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6359123682779820512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DownArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13295,7 +13352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1491180797911054979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DownArm.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13326,7 +13383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705003579568844607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axe_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13344,7 +13401,7 @@ GameObject:
   - component: {fileID: 8909014520013308360}
   - component: {fileID: 8136031099219385204}
   - component: {fileID: 8136031099219385203}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13418,7 +13475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1436630240632266008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13493,7 +13550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 557037823311972889}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DownArm.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13525,7 +13582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5751812588024224429}
   - component: {fileID: 646809100887368637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

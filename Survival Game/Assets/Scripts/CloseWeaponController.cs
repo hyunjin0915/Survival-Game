@@ -13,7 +13,7 @@ public abstract class CloseWeaponController : MonoBehaviour
     protected bool isAttack = false;//공격중여부
     protected bool isSwing = false;//팔을휘두르고있는지
 
-    private RaycastHit hitInfo;//레이저에 닿은것의정보를저장
+    protected RaycastHit hitInfo;//레이저에 닿은것의정보를저장
 
 
 
