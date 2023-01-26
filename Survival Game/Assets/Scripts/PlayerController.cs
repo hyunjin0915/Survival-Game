@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody myRigid; //플레이어의몸체
     private GunController theGunController;
     private Crosshair theCrosshair;
+    private StatusController theStatusController;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         myRigid = GetComponent<Rigidbody>();
         theGunController = FindObjectOfType<GunController>();
         theCrosshair = FindObjectOfType<Crosshair>();
+        theStatusController = FindObjectOfType<StatusController>();
 
         //초기화
         applySpeed = walkSpeed;
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrouch)
             Crouch(); //앉아있을때점프하면일어나게
-
+        theStatusController.DecreaseStamina(100);
         myRigid.velocity = transform.up * jumpForce;//갑자기velocity를변경해주는방법으로점프구현
     }
     private void TryRun()
@@ -152,6 +154,7 @@ public class PlayerController : MonoBehaviour
 
         isRun = true;
         theCrosshair.RunningAnimation(isRun);
+        theStatusController.DecreaseStamina(10);
         applySpeed = runSpeed;
     }
     private void RunningCancel()
