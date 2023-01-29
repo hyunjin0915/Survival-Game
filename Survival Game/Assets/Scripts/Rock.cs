@@ -21,6 +21,11 @@ public class Rock : MonoBehaviour
     private GameObject go_debris;//깨진바위
     [SerializeField]
     private GameObject go_effect_prefabs;// 채굴이펙트적용
+    [SerializeField]
+    private GameObject go_rock_item_prefabs; //돌맹이아이템
+
+    [SerializeField]
+    private int count;//돌맹이아이템등장개수
 
     //필요한사운드이름
     [SerializeField]
@@ -45,6 +50,12 @@ public class Rock : MonoBehaviour
         SoundManager.instance.PlaySE(destroy_Sound);
 
         col.enabled = false;
+
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(go_rock_item_prefabs, go_rock.transform.position, Quaternion.identity);
+        }
+
         Destroy(go_rock);
 
         go_debris.SetActive(true);
