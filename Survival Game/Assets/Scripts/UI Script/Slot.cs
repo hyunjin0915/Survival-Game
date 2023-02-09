@@ -23,21 +23,21 @@ public class Slot : MonoBehaviour
         itemImage.color = color;
     }
     //아이템획득
-    public void AddItem(Item _item, int _count=1)
+    public void AddItem(Item _item, int _count = 1)
     {
         item = _item;
         itemCount = _count;
         itemImage.sprite = item.itemImage; //itemImgae로하면안되고.sprite붙여줘야함
 
-        if (item.ItemType == Item.ItemType.Equipment)
-        {
-            text_Count.text = itemCount.ToString();
-            go_CountImage.SetActive(false);
-        }
-        else
+        if (item.itemType != Item.ItemType.Equipment)
         {
             go_CountImage.SetActive(true);
             text_Count.text = itemCount.ToString();
+        }
+        else
+        {
+            text_Count.text = "0";
+            go_CountImage.SetActive(false);
         }
         SetColor(1);
     }
@@ -58,7 +58,7 @@ public class Slot : MonoBehaviour
         itemImage.sprite = null;
         SetColor(0);
 
-        go_CountImage.SetActive(false);
         text_Count.text = "0";
+        go_CountImage.SetActive(false);
     }
 }
