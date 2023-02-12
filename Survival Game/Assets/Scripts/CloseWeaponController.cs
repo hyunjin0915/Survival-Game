@@ -19,11 +19,14 @@ public abstract class CloseWeaponController : MonoBehaviour
 
     protected void TryAttack()
     {
-        if (Input.GetButton("Fire1")) //좌클릭이총알발사,세팅수정
+        if (!Inventory.inventoryActivated)
         {
-            if (!isAttack)
+            if (Input.GetButton("Fire1")) //좌클릭이총알발사,세팅수정
             {
-                StartCoroutine(AttackCoroutine());//딜레이때문에코루틴실행이효율적
+                if (!isAttack)
+                {
+                    StartCoroutine(AttackCoroutine());//딜레이때문에코루틴실행이효율적
+                }
             }
         }
     }
